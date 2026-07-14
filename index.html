@@ -576,6 +576,64 @@
   .service-card.accent .service-arrow { background: rgba(255,255,255,0.2); color: white; }
   .service-card.soft .service-arrow { background: rgba(177,124,196,0.2); color: var(--deep-purple); }
 
+  /* ─── PRICING ─── */
+  #pricing {
+    background: var(--off-white);
+    position: relative; overflow: hidden;
+    padding: 100px 80px;
+  }
+  .pricing-header { text-align: center; max-width: 620px; margin: 0 auto 56px; }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .pricing-card {
+    background: white;
+    border: 1px solid rgba(177,124,196,0.2);
+    border-radius: 28px;
+    padding: 44px 36px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(67,0,71,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .pricing-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 48px rgba(67,0,71,0.1);
+  }
+  .pricing-tag {
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--orange); font-weight: 600; margin-bottom: 18px;
+  }
+  .pricing-role {
+    font-size: 20px; font-weight: 700; color: var(--deep-purple);
+    margin-bottom: 20px;
+  }
+  .pricing-amount {
+    font-family: 'Poppins', sans-serif;
+    font-size: 44px; font-weight: 700; color: var(--deep-purple);
+    line-height: 1;
+  }
+  .pricing-amount span {
+    font-size: 15px; font-weight: 500; color: var(--text-light);
+    margin-left: 4px;
+  }
+  .pricing-from {
+    font-size: 12px; font-weight: 500; text-transform: uppercase;
+    letter-spacing: 1px; color: var(--lavender); margin-bottom: 6px;
+  }
+  .pricing-desc {
+    font-size: 14px; font-weight: 300; line-height: 1.8;
+    color: var(--text-mid); margin-top: 18px;
+  }
+  .pricing-note {
+    text-align: center; max-width: 620px; margin: 40px auto 0;
+    font-size: 13px; font-weight: 300; color: var(--text-light);
+    line-height: 1.8;
+  }
+
   .service-blob {
     position: absolute; pointer-events: none; opacity: 0.1;
   }
@@ -1301,6 +1359,33 @@
   </div>
 </section>
 
+<!-- ─── TARIFS ─── -->
+<section id="pricing">
+  <div class="pricing-header">
+    <div class="section-tag reveal">Tarifs</div>
+    <h2 class="section-title reveal reveal-delay-1">Des tarifs<br>clairs et <em>transparents</em></h2>
+  </div>
+  <div class="pricing-grid">
+    <div class="pricing-card reveal">
+      <div class="pricing-tag">Call Center</div>
+      <div class="pricing-role">Agents call center</div>
+      <div class="pricing-from">À partir de</div>
+      <div class="pricing-amount">8€<span>/ heure</span></div>
+      <div class="pricing-desc">Agents formés et encadrés pour la gestion des appels entrants, avec suivi qualité et reporting régulier.</div>
+    </div>
+    <div class="pricing-card reveal reveal-delay-1">
+      <div class="pricing-tag">Développement</div>
+      <div class="pricing-role">Développeurs</div>
+      <div class="pricing-from">À partir de</div>
+      <div class="pricing-amount">15€<span>/ heure</span></div>
+      <div class="pricing-desc">Développeurs expérimentés pour vos projets sur mesure, du concept à la mise en production.</div>
+    </div>
+  </div>
+  <p class="pricing-note reveal reveal-delay-2">
+    Tarifs indicatifs, ajustés selon la complexité du projet, le volume et la durée de la mission. Contactez-moi pour un devis personnalisé.
+  </p>
+</section>
+
 <!-- ─── PROCESS ─── -->
 <section id="process">
   <div class="process-header">
@@ -1647,20 +1732,20 @@
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">Prénom</label>
-          <input type="text" class="form-input" placeholder="Marie">
+          <input type="text" class="form-input" id="cf-prenom" placeholder="Marie">
         </div>
         <div class="form-group">
           <label class="form-label">Nom</label>
-          <input type="text" class="form-input" placeholder="Dupont">
+          <input type="text" class="form-input" id="cf-nom" placeholder="Dupont">
         </div>
       </div>
       <div class="form-group">
         <label class="form-label">Email</label>
-        <input type="email" class="form-input" placeholder="marie@entreprise.com">
+        <input type="email" class="form-input" id="cf-email" placeholder="marie@entreprise.com">
       </div>
       <div class="form-group">
         <label class="form-label">Service souhaité</label>
-        <select class="form-input" style="color:rgba(255,255,255,0.7);">
+        <select class="form-input" id="cf-service" style="color:rgba(255,255,255,0.7);">
           <option value="" style="color:#333;">Choisir un service...</option>
           <option style="color:#333;">Développement sur mesure</option>
           <option style="color:#333;">Prospection commerciale</option>
@@ -1671,9 +1756,9 @@
       </div>
       <div class="form-group">
         <label class="form-label">Votre message</label>
-        <textarea class="form-input" placeholder="Décrivez votre projet ou besoin..."></textarea>
+        <textarea class="form-input" id="cf-message" placeholder="Décrivez votre projet ou besoin..."></textarea>
       </div>
-      <button class="form-submit">Envoyer le message →</button>
+      <button class="form-submit" id="cf-submit" type="button">Envoyer le message →</button>
     </div>
   </div>
 </section>
@@ -1884,6 +1969,33 @@ function closeProject() {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeProject();
 });
+
+// ─── CONTACT FORM → OUVRE LE CLIENT MAIL AVEC OBJET + MESSAGE PRÉ-REMPLIS ───
+const cfSubmit = document.getElementById('cf-submit');
+if (cfSubmit) {
+  cfSubmit.addEventListener('click', () => {
+    const prenom = document.getElementById('cf-prenom').value.trim();
+    const nom = document.getElementById('cf-nom').value.trim();
+    const email = document.getElementById('cf-email').value.trim();
+    const sujet = document.getElementById('cf-service').value.trim();
+    const message = document.getElementById('cf-message').value.trim();
+
+    if (!prenom || !nom || !sujet) {
+      alert('Merci de renseigner au moins votre prénom, votre nom et le service souhaité.');
+      return;
+    }
+
+    const destinataire = 'contact@ellahservices.com';
+    const objet = sujet;
+    let corps = `Je suis ${prenom} ${nom}, je te contacte au sujet de ${sujet}.\n\n${message}`;
+    if (email) {
+      corps += `\n\nMon email pour me recontacter : ${email}`;
+    }
+
+    const mailtoLink = `mailto:${destinataire}?subject=${encodeURIComponent(objet)}&body=${encodeURIComponent(corps)}`;
+    window.location.href = mailtoLink;
+  });
+}
 </script>
 </body>
 </html>
