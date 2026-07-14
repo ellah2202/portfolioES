@@ -118,8 +118,8 @@ export const services = {
     },
     {
       num: "04",
-      name: "Conseil digital",
-      desc: "Mettre en place les bons outils et processus pour une croissance durable.",
+      name: "Réception d'appel",
+      desc: "Gestion professionnelle des appels entrants avec un service client réactif et efficace.",
       variant: "light" as const,
     },
   ],
